@@ -8,7 +8,6 @@ init:
 
 cluster:
 		k3d cluster create my-cluster --config k3d-config.yaml
-		k3d taint node k3d-lab-server-0 k3s-controlplane=true:NoSchedule
 
 down:
 		k3d cluster delete my-cluster
