@@ -1,9 +1,9 @@
 apiVersion: k3d.io/v1alpha3
-kind: Simple 
+kind: Simple
 name: my-k3d-lab
-servers: 1 
-agents: 2
-image: rancher/k3s:v1.25.3-k3s1
+servers: 1
+agents: 3
+image: rancher/k3s:v1.26.4-k3s1
 registries:
   create:
     name: registry.labs
@@ -24,13 +24,13 @@ ports:
     nodeFilters:
       - agent:0
 options:
-  k3d: 
-    wait: true 
-    timeout: "60s" 
-    disableImageVolume: false 
+  k3d:
+    wait: true
+    timeout: "60s"
+    disableImageVolume: false
   kubeconfig:
-    updateDefaultKubeconfig: true 
-    switchCurrentContext: true 
+    updateDefaultKubeconfig: true
+    switchCurrentContext: true
   k3s:
     nodeLabels:
       - label: sharedvol=true
