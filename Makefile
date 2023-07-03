@@ -10,4 +10,4 @@ cluster:
 		k3d cluster create my-cluster --config k3d-config.yaml
 
 down:
-		k3d cluster delete my-cluster
+		k3d cluster stop my-cluster
