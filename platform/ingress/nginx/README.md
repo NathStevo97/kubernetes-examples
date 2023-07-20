@@ -12,13 +12,13 @@ helm search repo ingress-nginx --versions
 CHART_VERSION="4.4.0"
 APP_VERSION="1.5.1"
 
-mkdir ./kubernetes/ingress/controller/nginx/manifests/
+mkdir ./platform/ingress/nginx/
 
 helm template ingress-nginx ingress-nginx \
 --repo https://kubernetes.github.io/ingress-nginx \
 --version ${CHART_VERSION} \
 --namespace ingress-nginx \
-> ./kubernetes/ingress/controller/nginx/manifests/nginx-ingress.${APP_VERSION}.yaml
+> ./platform/ingress/nginx/nginx-ingress.${APP_VERSION}.yaml
 ```
 
 ## Deploy NGINX
