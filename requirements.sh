@@ -3,7 +3,7 @@
 function Docker {
   echo "Installing Docker"
   curl -sL get.docker.com | sh
-  sudo usermod -aG docker $USER
+  sudo usermod -aG docker "$USER"
 }
 
 function Kubectl {
@@ -32,11 +32,19 @@ function LinuxTools {
   sudo -E sh -c DEBIAN_FRONTEND=noninteractive apt install -y -qq curl jq make unzip zip vim git >/dev/null
 }
 
+function Kind {
+  # For AMD64 / x86_64
+  [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.26.0/kind-linux-amd64
+  chmod +x ./kind
+  sudo mv ./kind /usr/local/bin/kind
+}
+
 function Required {
   LinuxTools
   Kubectl
   Helm
   K3D
+  Kind
 }
 
 function Install {
