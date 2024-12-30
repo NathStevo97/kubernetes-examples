@@ -1,9 +1,8 @@
-apiVersion: k3d.io/v1alpha3
+apiVersion: k3d.io/v1alpha5
 kind: Simple
-name: my-k3d-lab
 servers: 1
 agents: 3
-image: rancher/k3s:v1.26.4-k3s1
+image: rancher/k3s:v1.32.0-rc1-k3s1
 registries:
   create:
     name: registry.labs
