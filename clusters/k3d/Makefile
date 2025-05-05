@@ -1,6 +1,6 @@
 create: init cluster
-
-destroy: down delete
+down: down
+destroy: down delete cleanup
 
 init:
 		mkdir -p /tmp/volumes/k3d0
