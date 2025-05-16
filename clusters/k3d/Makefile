@@ -11,6 +11,9 @@ init:
 cluster:
 		k3d cluster create my-cluster --config k3d-config.yaml
 
+up:
+		k3d cluster start my-cluster
+
 down:
 		k3d cluster stop my-cluster
 
