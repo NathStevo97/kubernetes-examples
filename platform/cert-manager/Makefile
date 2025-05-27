@@ -8,3 +8,7 @@ uninstall:
 	kubectl delete namespace cert-manager
 	helm repo remove jetstack
 	helm repo update
+
+templates:
+	helm template cert-manager jetstack/cert-manager --version v1.12.0 --namespace cert-manager --set installCRDs=true > cert-manager.yaml
+	helm template cert-manager jetstack/cert-manager --version v1.12.0 --namespace cert-manager --set installCRDs=true --output-dir templates

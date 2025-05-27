@@ -22,8 +22,8 @@ helm search repo ingress-nginx --versions
 ### Get the Values
 
 ```bash
-CHART_VERSION="4.11.3"
-APP_VERSION="1.11.3"
+CHART_VERSION="4.12.2"
+APP_VERSION="1.12.2"
 
 mkdir ./platform/ingress/nginx/
 
