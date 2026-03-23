@@ -1,14 +1,14 @@
 terraform {
-  required_version = ">= 0.13"
+  required_version = ">= 1.14.7"
 
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.25.0"
+      version = "4.65.0"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "1.13.3"
+      version = "3.0.1"
     }
   }
 }

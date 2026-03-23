@@ -1,5 +1,5 @@
-/* 
-This tf file exists to provision an Azure Resource group and an Azure Kubernetes Service Cluster 
+/*
+This tf file exists to provision an Azure Resource group and an Azure Kubernetes Service Cluster
 */
 resource "random_pet" "prefix" {} #generates a random prefix for resource naming, take out at convenience
 
@@ -12,6 +12,7 @@ resource "azurerm_resource_group" "AKS_Demo" {
     environment = "Demo"
   }
 }
+
 #Create the AKS Cluster
 resource "azurerm_kubernetes_cluster" "AKS_Demo" {
   name                = "${random_pet.prefix.id}-aks"
@@ -38,15 +39,15 @@ resource "azurerm_kubernetes_cluster" "AKS_Demo" {
     client_secret = var.password
   }
 
-  role_based_access_control {
-    enabled = true
-  }
+  # role_based_access_control {
+  #   enabled = true
+  # }
 
-  addon_profile {
-    kube_dashboard {
-      enabled = true
-    }
-  }
+  # addon_profile {
+  #   kube_dashboard {
+  #     enabled = true
+  #   }
+  # }
 
   tags = {
     environment = "Demo"

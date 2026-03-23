@@ -1,3 +1,5 @@
+# Kube-Prometheus Stack
+
 ## Setup
 
 ```bash
@@ -12,14 +14,15 @@ helm search repo prometheus-community/kube-prometheus-stack --versions
 - Release Name can be anything e.g. `monitoring`
 
 ## Get the Values
+
 ```bash
-CHART_VERSION="48.1.2"
-APP_VERSION="0.66.0"
+CHART_VERSION="82.0.0"
+APP_VERSION="0.89.0"
 
 mkdir ./kubernetes/monitoring/prometheus-grafana/manifests
 
 helm template kube-prometheus-stack kube-prometheus-stack \
 --repo https://prometheus-community.github.io/helm-charts \
---version "48.1.2" \
+--version "82.0.0" \
 --namespace monitoring \
-> ./platform/monitoring/kube-prometheus-stack-0.66.0.yaml
+> ./platform/monitoring/kube-prometheus-stack-0.89.0.yaml
