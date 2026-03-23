@@ -1,7 +1,10 @@
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "eks-demo-eks-${random_string.suffix.result}"
+  eks_cluster_name = "${local.resource_prefix}-cluster-${local.resource_suffix}"
+  resource_prefix  = "eks-demo"
+  resource_suffix  = random_string.suffix.result
+  vpc_name         = "${local.resource_prefix}-cluster-${local.resource_suffix}"
 }
 
 resource "random_string" "suffix" {

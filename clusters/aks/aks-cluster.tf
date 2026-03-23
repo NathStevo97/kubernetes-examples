@@ -4,7 +4,7 @@ This tf file exists to provision an Azure Resource group and an Azure Kubernetes
 resource "random_pet" "prefix" {} #generates a random prefix for resource naming, take out at convenience
 
 #create azure resource group
-resource "azurerm_resource_group" "AKS_Demo" {
+resource "azurerm_resource_group" "rg" {
   name     = "${random_pet.prefix.id}-rg"
   location = var.location
 
@@ -14,10 +14,10 @@ resource "azurerm_resource_group" "AKS_Demo" {
 }
 
 #Create the AKS Cluster
-resource "azurerm_kubernetes_cluster" "AKS_Demo" {
+resource "azurerm_kubernetes_cluster" "cluster" {
   name                = "${random_pet.prefix.id}-aks"
-  location            = azurerm_resource_group.AKS_Demo.location
-  resource_group_name = azurerm_resource_group.AKS_Demo.name
+  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
   dns_prefix          = "${random_pet.prefix.id}-k8s"
 
   default_node_pool {
@@ -38,16 +38,6 @@ resource "azurerm_kubernetes_cluster" "AKS_Demo" {
     client_id     = var.appId
     client_secret = var.password
   }
-
-  # role_based_access_control {
-  #   enabled = true
-  # }
-
-  # addon_profile {
-  #   kube_dashboard {
-  #     enabled = true
-  #   }
-  # }
 
   tags = {
     environment = "Demo"

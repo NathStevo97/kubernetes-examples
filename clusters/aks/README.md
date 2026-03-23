@@ -18,10 +18,10 @@ $ az ad sp create-for-rbac --skip-assignment
 }
 ```
 
-Then, replace `terraform.tfvars` values with your `appId` and `password`. 
+Then, replace `terraform.tfvars` values with your `appId` and `password`.
 Terraform will use these values to provision resources on Azure.
 
-After you've done this, initalize your Terraform workspace, which will download 
+After you've done this, initalize your Terraform workspace, which will download
 the provider and initialize it with the values provided in the `terraform.tfvars` file.
 
 ```shell
@@ -34,8 +34,7 @@ Initializing provider plugins...
 Terraform has been successfully initialized!
 ```
 
-
-Then, provision your AKS cluster by running `terraform apply`. This will 
+Then, provision your AKS cluster by running `terraform apply`. This will
 take approximately 10 minutes.
 
 ```shell
@@ -64,7 +63,7 @@ resource_group_name = light-eagle-rg
 To configure kubetcl run the following command:
 
 ```shell
-$ az aks get-credentials --resource-group light-eagle-rg --name light-eagle-aks;
+az aks get-credentials --resource-group light-eagle-rg --name light-eagle-aks;
 ```
 
 The
@@ -75,7 +74,7 @@ and [AKS name](https://github.com/hashicorp/learn-terraform-provision-aks-cluste
 You can view these outputs again by running:
 
 ```shell
-$ terraform output
+terraform output
 ```
 
 ## Configure Kubernetes Dashboard
@@ -98,9 +97,11 @@ Press CTRL+C to close the tunnel...
 ```
 
  You should be able to access the Kubernetes dashboard at [http://127.0.0.1:8001/](http://127.0.0.1:8001/).
+
 ## Cleaning Up
 
 Once done, say if you were running this code for local testing, delete the resources and service principalfrom Azure using:
+
 ```shell
 terrafrom destroy --auto-approve
 ```

@@ -41,7 +41,7 @@ variable "ip_range_services" {
   description = "The secondary ip range to use for services"
 }
 
-variable "service_account" {
+variable "service_account_id" {
   description = "Service account to associate to the nodes in the cluster"
 }
 

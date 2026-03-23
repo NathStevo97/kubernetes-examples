@@ -12,14 +12,13 @@ resource "local_file" "kubeconfig" {
   filename = "kubeconfig-${var.env_name}"
 }
 
-
-
 data "google_client_config" "default" {}
 
 data "google_compute_subnetwork" "subnetwork" {
-  name    = var.subnetwork
-  project = var.project_id
-  region  = var.region
+  name       = "${var.subnetwork}-${var.env_name}"
+  project    = var.project_id
+  region     = var.region
+  depends_on = [module.gcp-network]
 }
 
 module "gke" {
@@ -29,16 +28,16 @@ module "gke" {
   project_id = var.project_id
   name       = "${local.cluster_type}-cluster${var.cluster_name_suffix}"
   location   = var.region
-  network    = var.network
-  subnetwork = var.subnetwork
+  network    = "${var.network}-${var.env_name}"
+  subnetwork = "${var.subnetwork}-${var.env_name}"
 
   # Needed for the Multi-Network for Pods configuration
   datapath_provider       = "ADVANCED_DATAPATH"
   enable_multi_networking = true
 
   ip_allocation_policy = {
-    cluster_secondary_range_name  = var.ip_range_pods
-    services_secondary_range_name = var.ip_range_services
+    cluster_secondary_range_name  = var.ip_range_pods_name
+    services_secondary_range_name = var.ip_range_services_name
   }
 
   private_cluster_config = {
@@ -80,4 +79,5 @@ module "gke" {
       enabled = var.gce_pd_csi_driver
     }
   }
+  depends_on = [data.google_compute_subnetwork.subnetwork]
 }

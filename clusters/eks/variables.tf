@@ -1,5 +1,5 @@
 variable "eks_version" {
-  default = "1.24"
+  default = "1.33"
 }
 
 variable "region" {

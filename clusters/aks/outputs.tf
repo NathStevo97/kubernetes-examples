@@ -1,32 +1,38 @@
 #This tf file exists to display all the output information needed to configure kubectl to interact with the AKS cluster being created
 output "resource_group_name" {
-  value = azurerm_resource_group.AKS_Demo.name
+  value = azurerm_resource_group.rg.name
 }
 
 output "kubernetes_cluster_name" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.name
+  value = azurerm_kubernetes_cluster.cluster.name
 }
 
 output "host" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.kube_config.0.host
+  value     = azurerm_kubernetes_cluster.cluster.kube_config.0.host
+  sensitive = true
 }
 
 output "client_key" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.kube_config.0.client_key
+  value     = azurerm_kubernetes_cluster.cluster.kube_config.0.client_key
+  sensitive = true
 }
 
 output "client_certificate" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.kube_config.0.client_certificate
+  value     = azurerm_kubernetes_cluster.cluster.kube_config.0.client_certificate
+  sensitive = true
 }
 
 output "kube_config" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.kube_config_raw
+  value     = azurerm_kubernetes_cluster.cluster.kube_config_raw
+  sensitive = true
 }
 
 output "cluster_username" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.kube_config.0.username
+  value     = azurerm_kubernetes_cluster.cluster.kube_config.0.username
+  sensitive = true
 }
 
 output "cluster_password" {
-  value = azurerm_kubernetes_cluster.AKS_Demo.kube_config.0.password
+  value     = azurerm_kubernetes_cluster.cluster.kube_config.0.password
+  sensitive = true
 }
