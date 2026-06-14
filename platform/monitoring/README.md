@@ -16,13 +16,14 @@ helm search repo prometheus-community/kube-prometheus-stack --versions
 ## Get the Values
 
 ```bash
-CHART_VERSION="82.0.0"
-APP_VERSION="0.89.0"
+CHART_VERSION="86.2.3"
+APP_VERSION="0.91.0"
 
 mkdir ./kubernetes/monitoring/prometheus-grafana/manifests
 
 helm template kube-prometheus-stack kube-prometheus-stack \
 --repo https://prometheus-community.github.io/helm-charts \
---version "82.0.0" \
+--version "86.2.3" \
 --namespace monitoring \
-> ./platform/monitoring/kube-prometheus-stack-0.89.0.yaml
+> ./platform/monitoring/kube-prometheus-stack-0.91.0.yaml
+```
